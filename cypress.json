@@ -1,0 +1,10 @@
+{
+  "viewportWidth": 1280,
+  "viewportHeight": 900,
+  "baseUrl": "http://localhost:3000/",
+  "env": {
+    "API_URL": "http://localhost:5000/domains/",
+    "domain": "www.localhost-2.com"
+  }
+}
+

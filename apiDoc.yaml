@@ -1,0 +1,362 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Remotion Products
+  license:
+    name: MIT
+servers:
+  - url: https://www.clickcode.es/ws
+    description: production
+  - url: http://localhost:5000
+    description: local
+paths:
+  /:
+    get:
+      summary: Get domain data production
+      operationId: get_domain_data
+      tags:
+        - domain
+      parameters:
+        - name: domain
+          in: query
+          description: domain to fetch
+          required: true
+          example: www.localhost-2.com
+          schema:
+            type: string
+            pattern: x-(?:(?:(?<thld>[\w\-]*)(?:\.))?(?<sld>[\w\-]*))\.(?<tld>\w*)(?:\:(?<port>\d*))?
+            default: www.localhost-2.com
+            example: www.localhost-2.com
+      responses:
+        200:
+          description: Domain Data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DomainData"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+
+  /domains/{domain}:
+    get:
+      summary: Get domain data local
+      operationId: get_domain_data
+      tags:
+        - domain
+      parameters:
+        - name: domain
+          in: path
+          description: domain to fetch
+          required: true
+          example: www.localhost-2.com
+          schema:
+            type: string
+            pattern: x-(?:(?:(?<thld>[\w\-]*)(?:\.))?(?<sld>[\w\-]*))\.(?<tld>\w*)(?:\:(?<port>\d*))?
+            default: www.localhost-2.com
+            example: www.localhost-2.com
+      responses:
+        200:
+          description: Domain Data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DomainData"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+components:
+  schemas:
+    DomainData:
+      type: object
+      required:
+        - cover
+        - form
+        - global_info
+        - is_older
+        - product
+        - update
+      properties:
+        cover:
+          $ref: "#/components/schemas/Cover"
+        form:
+          $ref: "#/components/schemas/FormObject"
+        global_info:
+          $ref: "#/components/schemas/GlobalInfo"
+        is_older:
+          $ref: "#/components/schemas/IsOlder"
+        product:
+          type: string
+          example: MQ==
+        update:
+          type: string
+          example: 1
+    Cover:
+      type: object
+      required:
+        - description
+        - media
+        - metas
+        - show
+        - template
+      properties:
+        description:
+          type: string
+          example: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        media:
+          $ref: "#/components/schemas/Media"
+        metas:
+          $ref: "#/components/schemas/MetasSeoProps"
+        show:
+          type: boolean
+          example: true
+        template:
+          type: string
+          example: MQ==
+    FormObject:
+      type: object
+      required:
+        - description
+        - fields
+        - metas
+      properties:
+        description:
+          type: string
+          example: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        fields:
+          type: array
+          items:
+            $ref: "#/components/schemas/FormField"
+          example:
+            - formFieldName:
+                $ref: "#/components/examples/formFieldName"
+            - formFieldSurname:
+                $ref: "#/components/examples/formFieldSurname"
+            - formFieldEmail:
+                $ref: "#/components/examples/formFieldEmail"
+            - formFieldDNI:
+                $ref: "#/components/examples/formFieldDNI"
+            - formFieldAcceptLegal:
+                $ref: "#/components/examples/formFieldAcceptLegal"
+        metas:
+          $ref: "#/components/schemas/MetasSeoProps"
+    GlobalInfo:
+      type: object
+      required:
+        - align
+        - background
+        - background_color
+        - campaign
+        - color
+        - lang
+        - legal_info
+        - logo
+        - privacy_policy
+        - template
+      properties:
+        align:
+          type: string
+          pattern: x-(left|right|center)
+          example: left
+        background:
+          type: string
+          example: https://media.remotion.es/1/images/fondo-coche.jpg
+        background_color:
+          type: string
+          example: rgba(0,0.0,.8)
+        campaign:
+          type: string
+          example: Nombre Campaña
+        color:
+          type: string
+          example: "#fff"
+        lang:
+          type: string
+          pattern: x-(en_US|es_ES)
+          example: es_ES
+        legal_info:
+          $ref: "#/components/schemas/PageInfo"
+        logo:
+          type: string
+          example: https://media.remotion.es/1/images/logo-test.svg
+        privacy_policy:
+          $ref: "#/components/schemas/PageInfo"
+        template:
+          type: string
+          example: MQ==
+    IsOlder:
+      type: object
+      required:
+        - metas
+        - show
+        - template
+        - selector_type
+      properties:
+        metas:
+          $ref: "#/components/schemas/MetasSeoProps"
+        show:
+          type: boolean
+          example: true
+        template:
+          type: string
+          example: MQ==
+        selector_type:
+          type: string
+          pattern: x-(year|yes_no)
+          example: yes_no
+    Media:
+      type: object
+      required:
+        - image
+        - video
+      properties:
+        image:
+          type: string
+        video:
+          $ref: "#/components/schemas/Video"
+    Video:
+      type: object
+      required:
+        - poster
+        - source
+      properties:
+        poster:
+          type: string
+          example: ""
+        source:
+          type: string
+          example: https://media.remotion.es/1/video/glitch.mp4
+    MetasSeoProps:
+      type: object
+      required:
+        - meta_description
+        - meta_title
+        - title
+      properties:
+        meta_description:
+          type: string
+          example: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, quisquam sunt dolores deleniti perferendis, quam tempore atque inventore a perspiciatis laboriosam?
+        meta_title:
+          type: string
+          example: Entrada | Nombre Campaña
+        title:
+          type: string
+          example: Entrada | Nombre Campaña
+    PageInfo:
+      type: object
+      required:
+        - html
+        - pdf
+      properties:
+        html:
+          type: string
+          example: <h2>Legal Info</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget ante congue, tincidunt urna ac, ultrices quam. Morbi urna nulla, luctus lacinia tortor in, dapibus ullamcorper libero. Ut pellentesque eros eget lectus mollis feugiat. Aenean bibendum eu odio at tincidunt. Maecenas malesuada, tellus eu egestas sodales, dui nisi lacinia leo, ac euismod risus enim quis est. Maecenas vel ipsum id massa sollicitudin porta. Donec pulvinar mattis volutpat. Duis laoreet ut null..."
+        pdf:
+          type: string
+          example: https://media.remotion.es/1/legal/dummy.pdf
+    FormField:
+      type: object
+      required:
+        - in_loop
+        - key
+        - label
+        - type
+        - validation
+        - span_columns
+        - span_rows
+        - multiline
+        - order
+      properties:
+        in_loop:
+          type: boolean
+        key:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+          pattern: x-(text|password|number|tel|email|date|time|datetime-local|month|week|url|color|search)
+        validation:
+          type: array
+          items:
+            type: string
+            pattern: x-(required|min|max|email)
+        span_columns:
+          type: integer
+        span_rows:
+          type: integer
+        multiline:
+          type: integer
+        order:
+          type: integer
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+  responses:
+    ErrorResponse:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+  examples:
+    formFieldName:
+      value:
+        label: Nombre
+        key: name
+        type: text
+        in_loop: true
+        order: 1
+        span_columns: 1
+        span_rows: 1
+        validation:
+          - required
+    formFieldSurname:
+      value:
+        label: Apellidos
+        key: surname
+        type: text
+        in_loop: true
+        order: 2
+        span_columns: 1
+        span_rows: 1
+        validation:
+    formFieldEmail:
+      value:
+        label: Email
+        key: email
+        type: email
+        in_loop: true
+        order: 3
+        span_columns: 2
+        span_rows: 1
+        validation:
+          - required
+    formFieldDNI:
+      value:
+        label: Dni
+        key: dni
+        type: file
+        in_loop: true
+        order: 4
+        span_columns: 1
+        span_rows: 1
+        validation:
+          - required
+    formFieldAcceptLegal:
+      value:
+        label: Política Privacidad
+        key: accept_legal
+        type: checkbox
+        in_loop: false
+        order: 1
+        span_columns: 1
+        span_rows: 1
+        validation:
+          - required

@@ -1,0 +1,34 @@
+.form {
+  width: 100%;
+
+  .form-fields {
+    display: grid;
+    grid-gap: 10px;
+    margin-bottom: 2vh;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    .legal {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+}
+$rmd-icon-size: 0;
+@media (max-width: 769px) {
+  form {
+    .buttons {
+      margin-top: 6vw;
+    }
+  }
+}
+
+@-webkit-keyframes autofill {
+  0%,
+  100% {
+    color: inherit;
+    background: transparent;
+  }
+}

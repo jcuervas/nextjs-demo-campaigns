@@ -1,0 +1,12 @@
+.thank_you {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 5vh 3vw;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1)
+}

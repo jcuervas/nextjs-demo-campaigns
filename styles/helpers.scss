@@ -1,0 +1,195 @@
+
+@each $prop in (normal) {
+  white-space-#{$prop}{
+    white-space: $prop;;
+  }
+}
+
+@for $index from 1 through 20 {
+  .grid-columns-#{$index} {
+    grid-template-columns: repeat($index, 1fr);
+  }
+  .grid-gap-#{$index} {
+    grid-column-gap: #{$index}px;
+  }
+  .grid-column-span-#{$index} {
+    grid-column: span $index;
+  }
+  .grid-row-span-#{$index} {
+    grid-row: span $index;
+  }
+}
+
+@each $prop, $abbrev in (absolute: abs, relative: rel) {
+  .pos-#{$abbrev} {
+    position: $prop;
+  }
+}
+
+@each $prop in (none, flex, block, inline, inline-block, inline-flex, grid) {
+  .display-#{$prop} {
+    display: $prop !important
+  }
+}
+@each $direction in (row, column) {
+  .#{$direction} {
+    flex-direction: $direction;
+  }
+}
+
+@each $prop in (space-between, flex-start, center, flex-end, space-evenly, space-around) {
+  .justify-#{$prop} {
+    justify-content: $prop !important
+  }
+}
+
+@each $prop in (start, center, bottom) {
+  .items-#{$prop} {
+    align-items: $prop !important
+  }
+  .text-#{$prop} {
+    text-align: $prop;
+  }
+}
+
+@each $prop in (capitalize, uppercase, lowercase, full-width) {
+  .text-#{$prop} {
+    text-transform: $prop !important
+  }
+}
+
+@each $prop, $abbrev in (height: h, width: w) {
+  // width and height in pixels, each 4 -> example .w-12, h-20
+  @for $index from 0 through 180 {
+    $size: $index * 4;
+    $length: #{$size}px;
+
+    .#{$abbrev}-#{$size} {
+      #{$prop}: $length !important;
+      min-#{$prop}: $length !important;
+      max-#{$prop}: $length !important;
+    }
+
+  }
+
+  // width and height in %, each 4 -> example .w-12-x, h-20-x
+  @for $index from 0 through 100 {
+    $length: #{$index} + '%';
+
+    .#{$abbrev}-#{$index}-x {
+      #{$prop}: $length !important;
+      min-#{$prop}: $length !important;
+      max-#{$prop}: $length !important;
+    }
+  }
+
+  // width and height in viewport units -> example .w-12-vw, h-20-vh
+  @for $index from 0 through 100 {
+    $vw: #{$index}vw;
+    $vh: #{$index}vh;
+
+    .#{$abbrev}-#{$index}-vw {
+      #{$prop}: $vw !important;
+      min-#{$prop}: $vw !important;
+      max-#{$prop}: $vw !important;
+    }
+    .#{$abbrev}-#{$index}-vh {
+      #{$prop}: $vh !important;
+      min-#{$prop}: $vh !important;
+      max-#{$prop}: $vh !important;
+    }
+  }
+}
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @for $index from 0 through 64 {
+    $length: #{$index}px;
+
+    .#{$abbrev}-#{$index} {
+      #{$prop}: $length !important
+    }
+
+    .#{$abbrev}x-#{$index} {
+      #{$prop}-right: $length !important;
+      #{$prop}-left: $length !important;
+    }
+
+    .#{$abbrev}y-#{$index} {
+      #{$prop}-top: $length !important;
+      #{$prop}-bottom: $length !important;
+    }
+
+    .#{$abbrev}t-#{$index} {
+      #{$prop}-top: $length !important;
+    }
+
+    .#{$abbrev}r-#{$index} {
+      #{$prop}-right: $length !important;
+    }
+
+    .#{$abbrev}b-#{$index} {
+      #{$prop}-bottom: $length !important
+    }
+
+    .#{$abbrev}l-#{$index} {
+      #{$prop}-left: $length !important
+    }
+
+    .#{$abbrev}t-minus-#{$index} {
+      #{$prop}-top: -$length !important;
+    }
+
+    .#{$abbrev}r-minus-#{$index} {
+      #{$prop}-right: -$length !important;
+    }
+
+    .#{$abbrev}b-minus-#{$index} {
+      #{$prop}-bottom: -$length !important
+    }
+
+    .#{$abbrev}l-minus-#{$index} {
+      #{$prop}-left: -$length !important
+    }
+    @if ($abbrev == m) {
+      // Some special margin utils for flex alignments
+      .m-auto {
+        margin: auto !important
+      }
+      .mt-auto {
+        margin-top: auto !important
+      }
+
+      .mr-auto {
+        margin-right: auto !important
+      }
+
+      .mb-auto {
+        margin-bottom: auto !important
+      }
+
+      .ml-auto {
+        margin-left: auto !important
+      }
+
+      .mx-auto {
+        margin-right: auto !important;
+        margin-left: auto !important
+      }
+
+      .my-auto {
+        margin-top: auto !important;
+        margin-bottom: auto !important
+      }
+    }
+  }
+}
+
+@each $prop, $abbrev in (width: w, height: h) {
+  @for $index from 0 through 200 {
+    $length: #{$index * 2}px;
+
+    .#{$abbrev}-#{$index} {
+      #{$prop}: $length !important
+    }
+  }
+}

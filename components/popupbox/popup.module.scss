@@ -1,0 +1,73 @@
+.popupbox {
+  flex-wrap: wrap;
+  align-content: stretch;
+
+  .popupbox-wrapper {
+    overflow: auto;
+    max-width: 50vw;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    box-shadow: none;
+    background-color: transparent;
+
+    .popupbox-titleBar {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      align-content: center;
+      border: none;
+
+      .popupbox-btn--close {
+        color: #a39f9f;
+        font-family: 'Prelo Book';
+        font-size: 3vh;
+        line-height: 3vh;
+        cursor: pointer;
+        top: 0;
+        height: 100%;
+
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+
+    .popupbox-content {
+      p {
+        font-size: .85vw;
+        line-height: 1.1vw;
+      }
+    }
+  }
+
+  .popupbox-overlay {
+    background: none repeat scroll 0 0 #fff;
+  }
+}
+
+
+@media (max-width: 769px) {
+  .popupbox {
+    .popupbox-wrapper {
+      max-width: 80vw;
+
+      .popupbox-titleBar {
+        .popupbox-btn--close {
+          color: #a39f9f;
+          font-size: 28px;
+        }
+      }
+
+      .popupbox-content {
+        p {
+          font-size: 2vw;
+          line-height: 2.4vw;
+        }
+      }
+    }
+  }
+}

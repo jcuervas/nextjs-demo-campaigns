@@ -1,0 +1,15 @@
+.rmd-file-input-label {
+  .rmd-icon--font {
+    display: none;
+  }
+}
+
+.text-area {
+  .rmd-floating-label--active {
+    padding: 0 8px;
+    border-radius: 4px;
+  }
+}
+.rmd-toggle__icon--overlay::before {
+  background-color: white;
+}

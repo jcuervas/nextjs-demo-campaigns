@@ -1,0 +1,201 @@
+@import "helpers";
+@import "~react-md/dist/react-md";
+
+@include react-md-utils;
+
+@import "components/popupbox/popup.module";
+@import "components/form/elements/text-area.module";
+@import "components/steps/cover/video";
+
+@font-face {
+  font-family: 'Prelo';
+  src: url('../public/fonts/Prelo-SemiBold.eot');
+  src: url('../public/fonts/Prelo-SemiBold.eot?#iefix') format('embedded-opentype'),
+  url('../public/fonts/Prelo-SemiBold.woff2') format('woff2'),
+  url('../public/fonts/Prelo-SemiBold.woff') format('woff'),
+  url('../public/fonts/Prelo-SemiBold.ttf') format('truetype'),
+  url('../public/fonts/Prelo-SemiBold.svg#Prelo-SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Prelo Slab';
+  src: url('../public/fonts/PreloSlab-Bold.eot');
+  src: url('../public/fonts/PreloSlab-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../public/fonts/PreloSlab-Bold.woff2') format('woff2'),
+  url('../public/fonts/PreloSlab-Bold.woff') format('woff'),
+  url('../public/fonts/PreloSlab-Bold.ttf') format('truetype'),
+  url('../public/fonts/PreloSlab-Bold.svg#PreloSlab-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Prelo Book';
+  src: url('../public/fonts/Prelo-Book.eot');
+  src: url('../public/fonts/Prelo-Book.eot?#iefix') format('embedded-opentype'),
+  url('../public/fonts/Prelo-Book.woff2') format('woff2'),
+  url('../public/fonts/Prelo-Book.woff') format('woff'),
+  url('../public/fonts/Prelo-Book.ttf') format('truetype'),
+  url('../public/fonts/Prelo-Book.svg#Prelo-Book') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  text-align: center;
+  font-family: 'Prelo';
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Prelo Slab';
+  font-weight: 700;
+  font-size: 2.5vw;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+p, span, a, label {
+  font-family: 'Prelo Book';
+  font-size: .93vw;
+  padding: 0;
+  text-align: left;
+}
+
+.link {
+  font-family: 'Prelo Book';
+  color: inherit;
+  text-decoration: underline;
+  text-underline-position: under;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+
+.button {
+  font-family: 'Prelo';
+  font-size: 1rem;
+  color: #fff;
+  border: 0;
+  width: 100px;
+  height: 32.5px;
+  position: relative;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  transition: all .3s linear;
+  z-index: 0;
+
+
+  &.ok {
+    background-color: #58B65A;
+    right: 1.1vw;
+
+    &:after {
+      content: "";
+      width: 27.5px;
+      height: 27.5px;
+      border-radius: 5px;
+      background-color: #58B65A;
+      transform: rotate(45deg);
+      position: absolute;
+      right: -8px;
+      top: 4px;
+      z-index: -1;
+      transition: all .3s linear;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: #319233;
+      --rmd-states-background-color: none;
+
+      &:after {
+        background-color: #319233;
+      }
+    }
+  }
+
+  &.ko {
+    background-color: #BF4B31;
+    left: 1.1vw;
+
+    &:after {
+      content: "";
+      width: 27.5px;
+      height: 27.5px;
+      border-radius: 5px;
+      background-color: #BF4B31;
+      transform: rotate(45deg);
+      position: absolute;
+      left: -8px;
+      top: 4px;
+      z-index: -1;
+      transition: all .3s linear;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: #9c2f16;
+      --rmd-states-background-color: none;
+
+      &:after {
+        background-color: #9c2f16;
+      }
+    }
+  }
+
+  &:disabled {
+    opacity: .6;
+    cursor: default;
+  }
+}
+
+
+@media (max-width: 769px) {
+  h1 {
+    font-size: 6vw;
+  }
+
+  p, span, a, label {
+    font-size: 3.3vw;
+    line-height: 3.8vw;
+    margin: 1vh 0;
+  }
+
+  .button {
+    font-size: 3vw;
+    line-height: 5.6vw;
+    height: 6vw;
+    width: 17vw;
+
+    &.ok {
+      right: 2.8vw;
+
+      &:after {
+        width: 4.6vw;
+        height: 4.6vw;
+        right: -2vw;
+        top: .8vw;
+      }
+    }
+
+    &.ko {
+      left: 2.8vw;
+
+      &:after {
+        width: 4.6vw;
+        height: 4.6vw;
+        left: -2vw;
+        top: .8vw;
+      }
+    }
+  }
+}

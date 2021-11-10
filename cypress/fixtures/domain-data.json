@@ -1,0 +1,218 @@
+{
+  "id": "vjg9dhvvtgxkcuyghe0b",
+  "agencyId": "jWRsYJvz7dUrMEHarzuf35f3YOw2",
+  "clientName": "Nike",
+  "configuration": {
+    "lang": {
+      "label": "spanish",
+      "locale": "es-ES"
+    },
+    "campaignName": "nike promo",
+    "creationDate": "2021-06-20T18:00:36.456Z",
+    "startDate": "2021-01-05T23:00:00.000Z",
+    "endDate": null,
+    "legalInfo": {}
+  },
+  "template": {
+    "align": "right",
+    "backgroundImg": "img/nike_background.jpg",
+    "backgroundColor": "rgba(240, 10, 10, 0.8)",
+    "textColor": "#fff",
+    "logo": "img/logo_nike.svg",
+    "type": "boxed"
+  },
+  "cover": {
+    "media": {
+      "video": {}
+    },
+    "metas": {},
+    "show": true
+  },
+  "form": {
+    "fields": [
+      {
+        "order": 1,
+        "spanRows": 1,
+        "spanColumns": 1,
+        "publicLabel": "Name",
+        "multiline": 1,
+        "position": "body",
+        "validation": [
+          "required"
+        ],
+        "type": "text",
+        "id": "name",
+        "key": "name",
+        "enabled": true,
+        "editLabel": "campaigns.editPage.form.fields.edit.name",
+        "icon": "input"
+      },
+      {
+        "publicLabel": "Surname",
+        "spanColumns": 1,
+        "position": "body",
+        "icon": "input",
+        "spanRows": 1,
+        "order": 2,
+        "editLabel": "campaigns.editPage.form.fields.edit.surname",
+        "enabled": true,
+        "id": "surname",
+        "key": "surname",
+        "multiline": 1,
+        "validation": [],
+        "type": "text"
+      },
+      {
+        "spanRows": 1,
+        "type": "text",
+        "multiline": 1,
+        "icon": "input",
+        "enabled": true,
+        "id": "email",
+        "key": "email",
+        "editLabel": "campaigns.editPage.form.fields.edit.email",
+        "publicLabel": "Email",
+        "validation": [
+          "required",
+          "email"
+        ],
+        "position": "body",
+        "spanColumns": 1,
+        "order": 3
+      },
+      {
+        "key": "phone",
+        "multiline": 1,
+        "type": "text",
+        "spanRows": 1,
+        "publicLabel": "Phone number",
+        "spanColumns": 1,
+        "editLabel": "campaigns.editPage.form.fields.edit.phone",
+        "enabled": true,
+        "order": 4,
+        "position": "body",
+        "validation": [],
+        "icon": "input",
+        "id": "phone"
+      },
+      {
+        "spanColumns": 1,
+        "multiline": 1,
+        "icon": "input",
+        "validation": [],
+        "spanRows": 1,
+        "publicLabel": "Date of birth",
+        "key": "birthDate",
+        "position": "body",
+        "order": 5,
+        "enabled": true,
+        "type": "text",
+        "id": "birth",
+        "editLabel": "campaigns.editPage.form.fields.edit.birthDate"
+      },
+      {
+        "multiline": 1,
+        "editLabel": "campaigns.editPage.form.fields.edit.postalCode",
+        "enabled": true,
+        "spanColumns": 1,
+        "key": "postalCode",
+        "id": "postalCode",
+        "validation": [],
+        "icon": "input",
+        "publicLabel": "Postal code",
+        "type": "text",
+        "order": 6,
+        "position": "body",
+        "spanRows": 1
+      },
+      {
+        "multiline": 1,
+        "editLabel": "campaigns.editPage.form.fields.edit.pin",
+        "publicLabel": "pin",
+        "validation": [],
+        "icon": "input",
+        "spanColumns": 1,
+        "order": 7,
+        "type": "text",
+        "key": "pin",
+        "spanRows": 1,
+        "enabled": true,
+        "position": "body",
+        "id": "pin"
+      },
+      {
+        "enabled": true,
+        "type": "text",
+        "position": "body",
+        "key": "ticketNumber",
+        "icon": "input",
+        "multiline": 1,
+        "editLabel": "campaigns.editPage.form.fields.edit.ticketNumber",
+        "spanRows": 1,
+        "spanColumns": 1,
+        "order": 8,
+        "publicLabel": "Ticket number",
+        "id": "ticketNumber",
+        "validation": []
+      },
+      {
+        "position": "body",
+        "key": "ticketUpload",
+        "spanRows": 2,
+        "validation": [],
+        "icon": "cloud_upload",
+        "editLabel": "campaigns.editPage.form.fields.edit.ticketUpload",
+        "publicLabel": "Ticket Upload",
+        "multiline": 1,
+        "order": 9,
+        "spanColumns": 2,
+        "id": "ticketUpload",
+        "enabled": true,
+        "type": "file"
+      },
+      {
+        "spanColumns": 2,
+        "validation": [],
+        "order": 10,
+        "type": "file",
+        "multiline": 1,
+        "enabled": true,
+        "icon": "cloud_upload",
+        "publicLabel": "Dni Upload",
+        "spanRows": 2,
+        "position": "body",
+        "key": "dniUpload",
+        "editLabel": "campaigns.editPage.form.fields.edit.dniUpload",
+        "id": "dniUpload"
+      },
+      {
+        "spanRows": 1,
+        "validation": [
+          "required"
+        ],
+        "key": "submit",
+        "publicLabel": "submit",
+        "enabled": true,
+        "spanColumns": 1,
+        "editLabel": "campaigns.editPage.form.fields.edit.submit",
+        "type": "button",
+        "order": 11,
+        "multiline": 1,
+        "position": "actions",
+        "id": "submit",
+        "icon": "smart_button"
+      }
+    ],
+    "metas": {}
+  },
+  "isOlder": {
+    "metas": {},
+    "show": true,
+    "selectorType": "yes_no"
+  },
+  "pricingEmail": {},
+  "pinCodes": {
+    "typology": "alphanumeric"
+  },
+  "previewUrl": "https://vjg9dhvvtgxkcuyghe0b--preview.web.app"
+}

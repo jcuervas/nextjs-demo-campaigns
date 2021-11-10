@@ -1,0 +1,36 @@
+const {i18n} = require("./next-i18next.config");
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyA_ufTaiDP6qL5qm_dtSQjBDUtsVzO-p0I',
+  authDomain: 'remotion-22fde.firebaseapp.com',
+  databaseURL: 'https://remotion-22fde-default-rtdb.firebaseio.com',
+  projectId: 'remotion-22fde',
+  storageBucket: 'remotion-22fde.appspot.com',
+  messagingSenderId: '896277337533',
+  appId: '1:896277337533:web:2edbb9191f88ed79e22ed4',
+  measurementId: 'G-J4JZRL7M8G'
+}
+
+module.exports = {
+  distDir: "nextjs",
+  poweredByHeader: false,
+  i18n,
+  env: {
+    domain: "nike-promo",
+    firebaseConfig,
+    firebaseUser: 'public@remotion.es',
+    firebasePass: 'PublicRemotion1'
+  },
+  experimental: {
+    sprFlushToDisk: false,
+  },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.tsx?$/,
+      use: 'ts-loader',
+      include: "/node_modules/"
+    });
+
+    return config;
+  }
+};

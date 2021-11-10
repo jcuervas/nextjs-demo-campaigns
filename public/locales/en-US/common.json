@@ -1,0 +1,20 @@
+{
+  "enter": "Enter",
+  "see_legal_bases": "See legal bases",
+  "is_older": "Are you of legal age?",
+  "enter_birthday": "Enter your year of birth",
+  "yyyy": "YYYY",
+  "yes": "Yes",
+  "no": "No",
+  "send": "Send",
+  "error_required": "This field is required",
+  "error_no_valid": "The format is not correct",
+  "error_pin": "The pin is invalid",
+  "accept_privacy_policy": "I accept the ",
+  "privacy_policy": "Privacy Policy",
+  "none_selected": "None selected",
+  "thanks_for_register": "Thanks for participating!",
+  "insert_birth_year": "Insert your birth year",
+  "need_to_be_older": "You must be adult to continue",
+  "pageNotFound": "Ops! That page does not exist"
+}

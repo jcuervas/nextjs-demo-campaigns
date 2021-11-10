@@ -1,0 +1,15 @@
+.video-react {
+  .video-react-video {
+    outline: none;
+  }
+
+  .video-react-big-play-button {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+  }
+}
