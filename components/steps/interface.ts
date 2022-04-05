@@ -2,5 +2,5 @@ import {Campaign} from "@interfaces/campaign";
 
 export interface StepProps {
   campaign: Campaign;
-  nextPath?: string;
+  onNext?: (success: boolean) => void
 }

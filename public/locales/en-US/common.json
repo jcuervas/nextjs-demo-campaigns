@@ -1,5 +1,6 @@
 {
   "enter": "Enter",
+  "next": "Next",
   "see_legal_bases": "See legal bases",
   "is_older": "Are you of legal age?",
   "enter_birthday": "Enter your year of birth",
@@ -16,5 +17,8 @@
   "thanks_for_register": "Thanks for participating!",
   "insert_birth_year": "Insert your birth year",
   "need_to_be_older": "You must be adult to continue",
-  "pageNotFound": "Ops! That page does not exist"
+  "pageNotFound": "Ops! That page does not exist",
+  "ticketUpload": "Upload ticket",
+  "dniUpload": "Upload dni",
+  "name": "Name"
 }

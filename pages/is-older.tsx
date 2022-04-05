@@ -1,33 +1,53 @@
-import styles from './home.module.css'
-import {GetServerSideProps} from "next";
-import React, {useEffect} from "react";
-import {Campaign} from "@interfaces/campaign";
-import {cssVariables, mainStyles, setupInitialEffect} from "../helpers/util";
-import {MetasSeo} from "@components/metas/metasSeo";
-import IsOlderStep from "@components/steps/is-older/is-older-step";
-import {getPageProps} from "@interfaces/util";
-import Custom404 from "./404";
+import styles from './home.module.css';
+import {GetServerSideProps} from 'next';
+import React, {useEffect, useState} from 'react';
+import {Campaign} from '@interfaces/campaign';
+import {cssVariables, mainStyles, setupInitialEffect} from '../helpers/util';
+import {MetasSeo} from '@components/metas/metasSeo';
+import IsOlderStep from '@components/steps/is-older/is-older-step';
+import {getPageProps} from '@interfaces/util';
+import Custom404 from './404';
+import {StyledLinearProgress} from '@components/shared';
+import {useRouter} from 'next/router';
+import {theme} from '../styles/theme/theme';
+import {ThemeProvider} from '@mui/material/styles';
+
 
 export default function IsOlder(props: { campaign: Campaign }) {
-  const {campaign} = props
+  const {campaign} = props;
   const variables = cssVariables(campaign);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
   useEffect(() => {
-    campaign && setupInitialEffect(variables)
+    campaign && setupInitialEffect(variables);
   }, [variables]);
 
-  if (!campaign) return <Custom404/>
+  function onNext(success: boolean) {
+    setLoading(true);
+    const next = success ? (campaign.cover.show ? 'cover' : 'form') : '/reject';
+    router.push(next).then(() => setLoading(false));
+  }
+
+  if (!campaign) return <Custom404/>;
   return (
-    <div className={styles.container} style={mainStyles(campaign)}>
+    <ThemeProvider theme={theme(campaign)}>
       <MetasSeo metas={campaign.cover.metas}/>
-      <div className={styles.main + " template"}>
-        <div className={campaign.template.align + " " + campaign.template.type}>
-          <IsOlderStep campaign={campaign} nextPath="/form"/>
+      <main style={mainStyles(campaign)}>
+        {loading && <StyledLinearProgress/>}
+
+        <div className="template">
+          <div className={campaign.template.align + ' ' + campaign.template.type}>
+            <IsOlderStep campaign={campaign} onNext={onNext}/>
+          </div>
         </div>
-      </div>
-    </div>
-  )
+      </main>
+    </ThemeProvider>
+
+
+  );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  return getPageProps(context)
-}
+  return getPageProps(context);
+};

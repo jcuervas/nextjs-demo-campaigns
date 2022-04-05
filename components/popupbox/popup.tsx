@@ -1,5 +1,6 @@
-import React from "react";
-import {Dialog, DialogContent, DialogHeader, useToggle} from "react-md";
+import React, {useState} from 'react';
+import Dialog from '@mui/material/Dialog';
+import {DialogContent, DialogTitle} from '@mui/material';
 
 
 interface PopupProps {
@@ -8,17 +9,16 @@ interface PopupProps {
 }
 
 export function Popup(props: PopupProps) {
-  const [visible, enable, disable] = useToggle(false);
+  const [visible, setVisible] = useState(false);
   const {label, text} = props
   return (
     <div>
-      <a href="#" className="link" onClick={enable}>{props.label}</a>
+      <a href="#" className="link" onClick={() => setVisible(true)}>{props.label}</a>
       <Dialog
         id="popup-dialog"
-        visible={visible}
-        onRequestClose={disable}
+        open={visible}
         aria-labelledby={label}>
-        <DialogHeader>{label}</DialogHeader>
+        <DialogTitle>{label}</DialogTitle>
         <DialogContent>{text}</DialogContent>
       </Dialog>
     </div>

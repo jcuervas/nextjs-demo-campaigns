@@ -8,7 +8,7 @@ import React, {CSSProperties, useEffect} from "react";
 import Custom404 from "../404";
 import styles from '../home.module.css'
 import {useTranslation} from "next-i18next";
-import {Text} from "react-md";
+import {Typography} from '@mui/material';
 
 interface Props {
   campaign: Campaign
@@ -36,12 +36,11 @@ export default function RedeemPage(props: Props) {
     <div className={styles.container} style={mainStyles(campaign)}>
       <div className="display-flex column items-center justify-center w-100-vw h-100-vh">
         <div style={wrapperStyle}>
-          {success && (
-            <Text>{t('thanksForParticipating')}</Text>
-          )}
-          {!success && (
-            <Text>{t('codeAlreadyRedeemed')}</Text>
-          )}
+          {
+            success
+            && <Typography variant="h1">{t('thanksForParticipating')}</Typography>
+            || <Typography variant="h1">{t('codeAlreadyRedeemed')}</Typography>
+          }
         </div>
       </div>
     </div>

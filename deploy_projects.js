@@ -30,7 +30,7 @@ async function deployAll() {
 
   const projectUrls = await getProjects()
   for (const project of projectUrls) {
-    let replaceOrigin = `"site": (.+)`;
+    let replaceOrigin = `"site": "(.+)",`;
     let replaceDest = `"site": "${project}",`;
     await spawnProcess("sed", ["-i.bak", "-E", `s/${replaceOrigin}/${replaceDest}/g`, "firebase.json"]);
     await spawnProcess("npm", ["run", "deploy-hosting"])

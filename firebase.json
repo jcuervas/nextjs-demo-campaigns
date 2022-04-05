@@ -43,7 +43,8 @@
           "source": "**",
           "function": "nextjs-server"
         }
-      ]
+      ],
+      "maxVersions": 1
     }
   ]
 }

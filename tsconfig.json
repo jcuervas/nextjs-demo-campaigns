@@ -19,12 +19,25 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@interfaces/*": ["interfaces/*"],
-      "@themes/*": ["themes/*"],
-      "@services/*": ["services/*"],
+      "@components/*": [
+        "components/*"
+      ],
+      "@interfaces/*": [
+        "interfaces/*"
+      ],
+      "@themes/*": [
+        "themes/*"
+      ],
+      "@services/*": [
+        "services/*"
+      ]
     },
-    "types": ["cypress", "@testing-library/cypress", "node"]
+    "types": [
+      "cypress",
+      "@testing-library/cypress",
+      "node"
+    ],
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",

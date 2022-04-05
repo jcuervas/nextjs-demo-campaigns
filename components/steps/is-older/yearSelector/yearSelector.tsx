@@ -1,28 +1,30 @@
-import React, {FocusEvent, FormEventHandler, useState} from "react";
-import {Form, FormThemeProvider, TextField} from "@react-md/form";
+import React, {useState} from 'react';
 import {differenceInCalendarYears} from 'date-fns';
-import {useTranslation} from "next-i18next";
-import {Button} from "@react-md/button";
+import {useTranslation} from 'next-i18next';
+import {Button} from '@mui/material';
+import {useForm} from 'react-hook-form';
+import {StyledTextField} from '@components/shared';
 
-export function YearSelector(props: { onNext: (accept: boolean) => Promise<boolean> }) {
+export function YearSelector(props: { onNext: (accept: boolean) => void }) {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-  const {t} = useTranslation('common')
-  const [year, setYear] = useState<string>()
+  const {t} = useTranslation('common');
+  const [year, setYear] = useState('');
 
-  const verifyAge: FormEventHandler = (ev: FocusEvent<HTMLFormElement>) => {
-    const differenceInYears = differenceInCalendarYears(new Date(), new Date(ev.target.value))
-    return props.onNext(differenceInYears >= 18)
+  function verifyAge(data: {year: string}) {
+    const differenceInYears = differenceInCalendarYears(new Date(), new Date(data.year));
+    return props.onNext(differenceInYears >= 18);
   }
   return (
-    <FormThemeProvider theme="underline" underlineDirection="left">
-      <Form onSubmit={verifyAge}>
-        <h2>{t('insert_birth_year')}</h2>
-        <TextField
-          type="date"
-          id="year_selector"
-          value={year} onChange={ev => setYear(ev.target.value)}/>
-        <Button type="submit">{t('send')}</Button>
-      </Form>
-    </FormThemeProvider>
-    )
+    <form onSubmit={handleSubmit(verifyAge)}>
+      <h2>{t('insert_birth_year')}</h2>
+      <StyledTextField
+        type="date"
+        variant="standard"
+        {...register("year")}
+        id="year_selector"
+        value={year} onChange={ev => setYear(ev.target.value)}/>
+      <Button type="submit" variant="contained" color="primary" className="ok">{t('send')}</Button>
+    </form>
+  );
 }

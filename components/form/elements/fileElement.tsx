@@ -1,11 +1,15 @@
-import React, {ForwardedRef, useCallback, useState} from "react";
-import {FormElementProps} from "@components/form/formElement";
-import {FileInput} from "@react-md/form";
-import styles from './file.module.scss';
-import {CameraOutlineIcon} from "@components/icons/camera-outline.icon";
-import {useTranslation} from "next-i18next";
+import React, {ForwardedRef, useCallback, useState} from 'react';
+import {FormElementProps} from '@components/form/formElement';
+import {CameraOutlineIcon} from '@components/icons/camera-outline.icon';
+import {useTranslation} from 'next-i18next';
+import {IconButton, Typography} from '@mui/material';
+import {styled} from '@mui/material/styles';
+import {StyledIconButton, StyledText } from '@components/shared';
+
+const HiddenInput = styled('input')({display: 'none'})
 
 export const FileElement = React.forwardRef((props: FormElementProps, ref: ForwardedRef<HTMLInputElement>) => {
+
   const {element, className} = props;
   const [file, setFile] = useState("");
   const {t} = useTranslation('common');
@@ -28,24 +32,24 @@ export const FileElement = React.forwardRef((props: FormElementProps, ref: Forwa
 
   return (
     <>
-      <FileInput
-        ref={ref}
-        name={'_' + element.key}
-        className={className + ' ' + styles.fileInput}
-        id={element.key}
-        onChange={onChange}
-        theme="clear"
-        accept={element.valid_types}
-        themeType="contained"
-        buttonType={"text"}
-        disableIconSpacing={true}
-      >
-        {getIcon()}
-        <span className={styles.fileInputLabel}>{element.publicLabel}</span>
-      </FileInput>
-      <pre>
-        <code>{file || t("none_selected")}</code>
+      <label htmlFor={element.key}>
+        <HiddenInput
+          name={'_' + element.key}
+          accept="image/*"
+          id={element.key}
+          type="file"
+          onChange={onChange}/>
+        <StyledIconButton color="info" component="span">
+          {getIcon()}
+          <StyledText
+            variant="body1">
+            {t(element.publicLabel)}
+          </StyledText>
+        </StyledIconButton>
+        <pre>
+        <StyledText variant="body2">{file || t("none_selected")}</StyledText>
       </pre>
+      </label>
     </>
   )
 })

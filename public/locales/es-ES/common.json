@@ -1,5 +1,6 @@
 {
   "enter": "Entrar",
+  "next": "Siguiente",
   "see_legal_bases": "Ver bases legales",
   "is_older": "¿Eres mayor de edad?",
   "enter_birthday": "Introduce tu año de nacimiento",
@@ -22,5 +23,8 @@
   "congratulations": "Enhorabuena!",
   "thanksForParticipating": "Gracias por participar",
   "codeSuccessfullyRedeemed": "Código redimido con éxito",
-  "codeAlreadyRedeemed": "Ops! este código ya ha sido utilizado"
+  "codeAlreadyRedeemed": "Ops! este código ya ha sido utilizado",
+  "ticketUpload": "Cargar el ticket",
+  "dniUpload": "Cargar el dni",
+  "name": "Nombre"
 }

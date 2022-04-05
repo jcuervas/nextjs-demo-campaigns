@@ -2,8 +2,6 @@ import { Language } from './language'
 import {LegalInfo} from "@interfaces/legalInfo";
 import {MetasSeoProps} from "@interfaces/metasSeoProps";
 import {Media} from "@interfaces/media";
-import { SupportedInputTypes } from 'react-md';
-import {firestore} from "firebase-admin/lib/firestore";
 import {parseDate} from "@interfaces/util";
 
 export type AllowedFormType = 'text'|'email'|'checkbox'|'file'|'textarea'|'button'
@@ -97,7 +95,7 @@ export class FormField {
   order: number
   position: FormPosition
   publicLabel: string
-  type: SupportedInputTypes
+  type: string
   validation: ValidationType[]
   spanColumns: number
   spanRows: number

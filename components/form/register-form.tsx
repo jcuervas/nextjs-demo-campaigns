@@ -3,11 +3,11 @@ import styles from './form.module.scss';
 import {FormElement} from './formElement';
 import {Popup} from '../popupbox/popup';
 
-import {FormThemeProvider} from "@react-md/form";
 import {useForm} from "react-hook-form";
 import {useTranslation} from "next-i18next";
 import {Campaign, FormField} from "@interfaces/campaign";
-import {Button} from "@react-md/button";
+import {Button} from '@mui/material';
+import { StyledButton } from "@components/shared";
 
 interface FormProps {
   campaign: Campaign;
@@ -21,10 +21,7 @@ export default function RegisterForm(props: FormProps) {
   const {t} = useTranslation('common');
   const formBody = form.fields.filter(field => field.enabled && field.position === 'body' && allowedFieldTypes.includes(field.type));
   const formActions = form.fields.filter(field => field.enabled && field.position === 'actions' && allowedFieldTypes.includes(field.type));
-  const {handleSubmit, register, errors, formState} = useForm<FormData>({
-    mode: 'onChange', reValidateMode: 'onChange',
-  });
-  const {isDirty, isValid} = formState;
+  const {handleSubmit, register, formState: {errors}} = useForm();
   const [files, setFiles] = useState<{[x: string]: File}>({});
 
   const onSubmit = data => {
@@ -58,10 +55,6 @@ export default function RegisterForm(props: FormProps) {
     setFiles({...files, [element.key]: file});
   }
 
-  const formDisabled = () => {
-    return !isDirty || !isValid
-  }
-
   const formFieldsStyles: CSSProperties = {
     gridTemplateColumns: `repeat(${form.gridColNumber}, 1fr)`,
   }
@@ -71,13 +64,14 @@ export default function RegisterForm(props: FormProps) {
           onSubmit={handleSubmit(onSubmit)}
           className={styles.form}
     >
-      <FormThemeProvider theme="underline" underlineDirection="left">
-        <div className={styles['form-fields']} style={formFieldsStyles}>
+      <div className={styles['form-fields']} style={formFieldsStyles}>
           {formBody.map((element: FormField) => {
             return (
               <FormElement
-                register={register}
-                errors={errors}
+                register={register(element.key, {
+                  required: element.validation.includes('required')
+                })}
+                error={errors[element.key]}
                 className={getElementSpan(element)}
                 element={element}
                 key={element.key}
@@ -85,22 +79,23 @@ export default function RegisterForm(props: FormProps) {
               />)
           })}
         </div>
-      </FormThemeProvider>
 
       <div className={styles.buttons}>
         <div className={styles.legal}>
           {formActions.map((element: FormField) => {
             return (
               <FormElement
-                register={register}
-                errors={errors}
+                register={register(element.key, {
+                  required: element.validation.includes('required')
+                })}
                 className={getElementSpan(element)}
+                error={errors[element.key]}
                 element={element}
                 key={element.key}
               />)
           })}
         </div>
-        <Button type="submit" className="button ok" disabled={formDisabled()}>{t('send')}</Button>
+        <StyledButton type="submit" className="ok">{t('send')}</StyledButton>
       </div>
     </form>
   );

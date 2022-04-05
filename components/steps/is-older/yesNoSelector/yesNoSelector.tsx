@@ -1,19 +1,16 @@
 import React from "react";
-import Link from "next/link";
-
-import styles from "./yes-no-selector.module.scss";
 import {useTranslation} from "next-i18next";
-import {Button} from "@react-md/button";
+import {StyledButton} from "@components/shared";
 
 
-export function YesNoSelector(props: { onNext: (accept: boolean) => Promise<boolean> }) {
+export function YesNoSelector(props: { onNext: (accept: boolean) => void }) {
 
   const {t} = useTranslation('common')
 
   return (
-    <div className={styles['yes-no-selector']}>
-      <Button className="button ko" onClick={() => props.onNext(false)}>{t('no')}</Button>
-      <Button className="button ok" onClick={() => props.onNext(true)}>{t('yes')}</Button>
-    </div>
+    <>
+      <StyledButton className="button ko" onClick={() => props.onNext(false)}>{t('no')}</StyledButton>
+      <StyledButton className="button ok" onClick={() => props.onNext(true)}>{t('yes')}</StyledButton>
+    </>
   );
 }

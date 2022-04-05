@@ -1,0 +1,17 @@
+$primaryMain: #58B65A;
+$primaryLight: #e5c183;
+$primaryDark: #319233;
+
+$secondaryMain: #f56000;
+
+$errorMain: #BF4B31;
+
+:export {
+  primaryMain: $primaryMain;
+  primaryLight: $primaryLight;
+  primaryDark: $primaryDark;
+
+  secondaryMain: $secondaryMain;
+
+  errorMain: $errorMain;
+}

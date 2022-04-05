@@ -1,19 +1,21 @@
-import React, {ForwardedRef} from "react";
-import {FormElementProps} from "@components/form/formElement";
-import {Checkbox} from "@react-md/form";
+import React, {ForwardedRef} from 'react';
+import {FormElementProps} from '@components/form/formElement';
+import Checkbox from '@mui/material/Checkbox';
+import {FormControlLabel} from '@mui/material';
 
 export const CheckElement = React.forwardRef((props: FormElementProps, ref: ForwardedRef<HTMLInputElement>) => {
-  return (
-      <Checkbox
-        ref={ref}
-        id={props.element.key}
-        name={props.element.key}
-        defaultChecked={props.value}
+    return (
+      <FormControlLabel
+        control={
+          <Checkbox
+            ref={ref}
+            {...props.register}
+            id={props.element.key}
+            name={props.element.key}
+            defaultChecked={false}
+            disableRipple={false}/>
+        }
         label={props.element.publicLabel}
-        disableProgrammaticRipple={false}
-        disableRipple={false}
-        rippleClassNames={{}}
-        rippleTimeout={0}/>
-    )
+    />)
   }
 );

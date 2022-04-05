@@ -1,7 +1,7 @@
 import React, {CSSProperties} from "react";
 import {CampaignTicket} from "@interfaces/campaign-ticket";
-import {Button} from "@react-md/button";
 import {useTranslation} from "next-i18next";
+import Button from '@mui/material/Button';
 
 interface Props {
   ticket: CampaignTicket,

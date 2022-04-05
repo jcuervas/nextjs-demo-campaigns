@@ -16,7 +16,7 @@
   "template": {
     "align": "right",
     "backgroundImg": "img/nike_background.jpg",
-    "backgroundColor": "rgba(240, 10, 10, 0.8)",
+    "backgroundColor": "rgba(240, 10, 10, 0.7)",
     "textColor": "#fff",
     "logo": "img/logo_nike.svg",
     "type": "boxed"
