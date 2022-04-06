@@ -33,6 +33,20 @@ class AdminService {
     return data && new Campaign(data) || null
   }
 
+  async getCampaignFromDomain(site: string, isPreview: boolean): Promise<Campaign> {
+    let domainAliasSnapshot = await admin.firestore().collection('domainAlias').doc(site).get()
+    if (!domainAliasSnapshot.exists) {
+      domainAliasSnapshot = await admin.firestore().collection('domainAlias').doc(site + '.web.app').get()
+    }
+    const domainAlias = domainAliasSnapshot.data()
+    if (!domainAlias) return null
+    const campaignId = domainAlias.campaignId + (isPreview ? '-preview' : '')
+    const campaignSnapshot = await admin.firestore().collection('campaigns')
+      .doc(campaignId).get()
+    const data = campaignSnapshot.data()
+    return data && new Campaign(data) || null
+  }
+
   async getPincode(pincode: string) {
     const snapshot = await admin.firestore().collection('pinCodes')
       .where('code','==', pincode).limit(1).get()

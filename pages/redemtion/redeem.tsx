@@ -1,19 +1,17 @@
-import {PinCode} from "@interfaces/pinCode";
-import {GetServerSideProps} from "next";
-import {getPageProps} from "@interfaces/util";
-import adminService from "@services/admin-service";
-import {cssVariables, mainStyles, setupInitialEffect} from "../../helpers/util";
-import {Campaign} from "@interfaces/campaign";
-import React, {CSSProperties, useEffect} from "react";
-import Custom404 from "../404";
-import styles from '../home.module.css'
-import {useTranslation} from "next-i18next";
-import {CardContent, Typography} from '@mui/material';
+import {PinCode} from '@interfaces/pinCode';
+import {GetServerSideProps} from 'next';
+import {getPageProps} from '@interfaces/util';
+import adminService from '@services/admin-service';
+import {cssVariables, mainStyles, setupInitialEffect} from '../../helpers/util';
+import {Campaign} from '@interfaces/campaign';
+import React, {CSSProperties, useEffect} from 'react';
+import Custom404 from '../404';
+import {useTranslation} from 'next-i18next';
+import {CardContent} from '@mui/material';
 import {ThemeProvider} from '@mui/material/styles';
 import {theme} from '../../styles/theme/theme';
 import {MetasSeo} from '@components/metas/metasSeo';
-import PinCodeStep from '@components/steps/pin-code/pin-code-step';
-import { StyledCard } from "@components/shared";
+import {StyledCard} from '@components/shared';
 
 interface Props {
   campaign: Campaign
@@ -30,16 +28,11 @@ export default function RedeemPage(props: Props) {
     campaign && setupInitialEffect(variables)
   }, [variables]);
 
-  const wrapperStyle: CSSProperties = {
-    backgroundColor: "white",
-    borderRadius: "6px",
-    padding: "20px"
-  }
-
   if (!campaign || !pinCode) return <Custom404/>
+
   return (
     <ThemeProvider theme={theme(campaign)}>
-      <MetasSeo metas={campaign.cover.metas}/>
+      <MetasSeo metas={campaign.form.metas}/>
       <main style={mainStyles(campaign)}>
         <div className="template">
           <div className={campaign.template.align + ' ' + campaign.template.type}>

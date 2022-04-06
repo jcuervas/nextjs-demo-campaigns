@@ -18,11 +18,11 @@ export function getCampaign(req: IncomingMessage & { cookies: NextApiRequestCook
     site = 'zqedwapzkjl2jcbpb8pi'
   } else {
     const siteMatch = (req.headers['x-forwarded-host'] as string).match(siteRegEx)
-    // site = siteMatch[1] === 'www' ? siteMatch[2] : siteMatch[1]
-    site = siteMatch[0].split('.')[0]
-    console.log({site, siteMatch})
+    site = siteMatch[0]
   }
-  return adminService.getCampaign(site);
+  const isPreview = site.includes('-preview')
+  const siteName = site.replace(/(https:\/\/|\/|-preview|\.web\.app|\.firebaseapp\.com)/g, '')
+  return adminService.getCampaignFromDomain(siteName, isPreview);
 }
 
 export async function getPageProps(context) {
