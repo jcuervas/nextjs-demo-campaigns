@@ -20,6 +20,7 @@ export function getCampaign(req: IncomingMessage & { cookies: NextApiRequestCook
     const siteMatch = (req.headers['x-forwarded-host'] as string).match(siteRegEx)
     // site = siteMatch[1] === 'www' ? siteMatch[2] : siteMatch[1]
     site = siteMatch[0].split('.')[0]
+    console.log({site, siteMatch})
   }
   return adminService.getCampaign(site);
 }

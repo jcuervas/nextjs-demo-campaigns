@@ -10,6 +10,11 @@ import {PinCode} from "@interfaces/pinCode";
 import PinCodeStep from '@components/steps/pin-code/pin-code-step';
 import {CampaignTicket} from "@interfaces/campaign-ticket";
 import {useRouter} from "next/router";
+import {ThemeProvider} from '@mui/material/styles';
+import {theme} from '../../styles/theme/theme';
+import {MetasSeo} from '@components/metas/metasSeo';
+import {StyledLinearProgress} from '@components/shared';
+import IsOlderStep from '@components/steps/is-older/is-older-step';
 
 interface Props {
   campaign: Campaign
@@ -35,11 +40,16 @@ export default function PincodePage(props: Props) {
 
   if (!campaign || !pinCode || !ticket) return <Custom404/>
   return (
-    <div className={styles.container} style={mainStyles(campaign)}>
-      <div className="display-flex column items-center justify-center w-100-vw h-100-vh">
-        <PinCodeStep ticket={ticket} onNext={onConfirmRedeem}/>
-      </div>
-    </div>
+    <ThemeProvider theme={theme(campaign)}>
+      <MetasSeo metas={campaign.cover.metas}/>
+      <main style={mainStyles(campaign)}>
+        <div className="template">
+          <div className={campaign.template.align + ' ' + campaign.template.type}>
+            <PinCodeStep ticket={ticket} onNext={onConfirmRedeem}/>
+          </div>
+        </div>
+      </main>
+    </ThemeProvider>
   )
 }
 

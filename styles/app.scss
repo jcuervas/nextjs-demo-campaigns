@@ -66,10 +66,19 @@ h1 {
   text-align: left;
   width: 100%;
 }
+h2 {
+  font-family: 'Prelo Book';
+  font-weight: 700;
+  font-size: 2vw;
+  margin: 16px 0;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
 
 p, span, a, label {
   font-family: 'Prelo Book';
-  font-size: .93vw;
+  font-size: 1.2vw;
   padding: 0;
   text-align: left;
 }
@@ -86,17 +95,37 @@ p, span, a, label {
   padding: 0;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 911px) {
   h1 {
     font-size: 5vw;
+    line-height: 6vw
+  }
+  h2 {
+    font-size: 4vw;
+    line-height: 5vw;
   }
 
   p, span, a, label {
-    font-size: 2.2vw;
-    line-height: 2.8vw;
-    margin: 1vh 0;
+    font-size: 2.5vw;
+    line-height: 3.6vw;
+    margin: 0 0 3vh;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 6vw;
+    line-height: 7vw;
+  }
+  h3 {
+    font-size: 5vw;
+    line-height: 6vw;
   }
 
+  p, span, a, label {
+    font-size: 4vw;
+    line-height: 4.8vw;
+  }
 }
 
 input:-webkit-autofill,

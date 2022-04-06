@@ -8,7 +8,12 @@ import React, {CSSProperties, useEffect} from "react";
 import Custom404 from "../404";
 import styles from '../home.module.css'
 import {useTranslation} from "next-i18next";
-import {Typography} from '@mui/material';
+import {CardContent, Typography} from '@mui/material';
+import {ThemeProvider} from '@mui/material/styles';
+import {theme} from '../../styles/theme/theme';
+import {MetasSeo} from '@components/metas/metasSeo';
+import PinCodeStep from '@components/steps/pin-code/pin-code-step';
+import { StyledCard } from "@components/shared";
 
 interface Props {
   campaign: Campaign
@@ -33,17 +38,24 @@ export default function RedeemPage(props: Props) {
 
   if (!campaign || !pinCode) return <Custom404/>
   return (
-    <div className={styles.container} style={mainStyles(campaign)}>
-      <div className="display-flex column items-center justify-center w-100-vw h-100-vh">
-        <div style={wrapperStyle}>
-          {
-            success
-            && <Typography variant="h1">{t('thanksForParticipating')}</Typography>
-            || <Typography variant="h1">{t('codeAlreadyRedeemed')}</Typography>
-          }
+    <ThemeProvider theme={theme(campaign)}>
+      <MetasSeo metas={campaign.cover.metas}/>
+      <main style={mainStyles(campaign)}>
+        <div className="template">
+          <div className={campaign.template.align + ' ' + campaign.template.type}>
+            <StyledCard sx={{display: 'flex', alignItems: 'center'}}>
+              <CardContent>
+                {
+                  success
+                  && <h1>{t('thanksForParticipating')}</h1>
+                  || <h1>{t('codeAlreadyRedeemed')}</h1>
+                }
+              </CardContent>
+            </StyledCard>
+          </div>
         </div>
-      </div>
-    </div>
+      </main>
+    </ThemeProvider>
   )
 }
 

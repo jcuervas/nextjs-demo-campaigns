@@ -40,13 +40,16 @@ export const FileElement = React.forwardRef((props: FormElementProps, ref: Forwa
           id={element.key}
           type="file"
           onChange={onChange}/>
-        <StyledIconButton color="info" component="span">
-          {getIcon()}
-          <StyledText
-            variant="body1">
-            {t(element.publicLabel)}
-          </StyledText>
-        </StyledIconButton>
+        {
+          // @ts-ignore
+          <StyledIconButton color="info" component="span">
+            {getIcon()}
+            <StyledText
+              variant="body1">
+              {t(element.publicLabel)}
+            </StyledText>
+          </StyledIconButton>
+        }
         <pre>
         <StyledText variant="body2">{file || t("none_selected")}</StyledText>
       </pre>
