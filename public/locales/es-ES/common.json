@@ -26,5 +26,6 @@
   "codeAlreadyRedeemed": "Ops! este código ya ha sido utilizado",
   "ticketUpload": "Cargar el ticket",
   "dniUpload": "Cargar el dni",
-  "name": "Nombre"
+  "name": "Nombre",
+  "fileCouldNotBeUploaded": "No se pudo subir el archivo, intentalo de nuevo"
 }

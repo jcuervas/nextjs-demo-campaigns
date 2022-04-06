@@ -1,11 +1,13 @@
-import {GetServerSideProps} from "next";
-import {Campaign} from "@interfaces/campaign";
-import React, {useEffect} from "react";
-import {cssVariables, mainStyles, setupInitialEffect} from "../helpers/util";
-import styles from "./home.module.css";
-import {ThankYouStep} from "@components/steps/thank-you/thank-you-step";
-import {getPageProps} from "@interfaces/util";
-import Custom404 from "./404";
+import {GetServerSideProps} from 'next';
+import {Campaign} from '@interfaces/campaign';
+import React, {useEffect} from 'react';
+import {cssVariables, mainStyles, setupInitialEffect} from '../helpers/util';
+import {ThankYouStep} from '@components/steps/thank-you/thank-you-step';
+import {getPageProps} from '@interfaces/util';
+import Custom404 from './404';
+import {ThemeProvider} from '@mui/material/styles';
+import {theme} from '../styles/theme/theme';
+import {MetasSeo} from '@components/metas/metasSeo';
 
 export default function ThankYou(props: { campaign: Campaign }) {
 
@@ -17,10 +19,16 @@ export default function ThankYou(props: { campaign: Campaign }) {
 
   if (!campaign) return <Custom404/>
   return (
-    <div className={styles.container} style={mainStyles(campaign)}>
-      <ThankYouStep/>
-      <footer className={styles.footer}/>
-    </div>
+  <ThemeProvider theme={theme(campaign)}>
+    <MetasSeo metas={campaign.cover.metas}/>
+    <main style={mainStyles(campaign)}>
+      <div className="template">
+        <div className={campaign.template.align + ' ' + campaign.template.type}>
+          <ThankYouStep/>
+        </div>
+      </div>
+    </main>
+  </ThemeProvider>
   )
 }
 

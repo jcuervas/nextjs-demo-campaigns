@@ -22,6 +22,7 @@ export const FileElement = React.forwardRef((props: FormElementProps, ref: Forwa
 
   const onChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>(
     (event) => {
+
       const [file] = Array.from(event.currentTarget.files || [null]);
       if (file) {
         setFile(file.name);

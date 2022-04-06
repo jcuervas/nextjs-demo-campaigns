@@ -20,5 +20,6 @@
   "pageNotFound": "Ops! That page does not exist",
   "ticketUpload": "Upload ticket",
   "dniUpload": "Upload dni",
-  "name": "Name"
+  "name": "Name",
+  "fileCouldNotBeUploaded": "File could not be uploaded, try again"
 }
