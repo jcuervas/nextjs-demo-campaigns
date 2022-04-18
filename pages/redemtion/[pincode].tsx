@@ -42,7 +42,7 @@ export default function PincodePage(props: Props) {
   return (
     <ThemeProvider theme={theme(campaign)}>
       <MetasSeo metas={campaign.cover.metas}/>
-      <main style={mainStyles(campaign)}>
+      <main style={mainStyles}>
         <div className="template">
           <div className={campaign.template.align + ' ' + campaign.template.type}>
             <PinCodeStep ticket={ticket} onNext={onConfirmRedeem}/>

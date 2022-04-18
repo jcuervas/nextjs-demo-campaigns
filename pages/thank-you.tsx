@@ -22,7 +22,7 @@ export default function ThankYou(props: { campaign: Campaign }) {
   return (
   <ThemeProvider theme={theme(campaign)}>
     <MetasSeo metas={campaign.cover.metas}/>
-    <main style={mainStyles(campaign)}>
+    <main style={mainStyles}>
       <StyledBackground/>
       <div className="template">
         <div className={campaign.template.align + ' ' + campaign.template.type}>

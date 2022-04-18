@@ -33,7 +33,7 @@ export default function RedeemPage(props: Props) {
   return (
     <ThemeProvider theme={theme(campaign)}>
       <MetasSeo metas={campaign.form.metas}/>
-      <main style={mainStyles(campaign)}>
+      <main style={mainStyles}>
         <div className="template">
           <div className={campaign.template.align + ' ' + campaign.template.type}>
             <StyledCard sx={{display: 'flex', alignItems: 'center'}}>
