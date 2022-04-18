@@ -2,10 +2,14 @@ import {GetServerSideProps} from "next";
 import {Campaign} from "@interfaces/campaign";
 import React, {useEffect} from "react";
 import {cssVariables, mainStyles, setupInitialEffect} from "../helpers/util";
-import styles from "./home.module.css";
 import {RejectStep} from "@components/steps/reject/reject-step";
 import {getPageProps} from "@interfaces/util";
 import Custom404 from "./404";
+import {StyledBackground} from '@components/shared';
+import {theme} from '../styles/theme/theme';
+import {MetasSeo} from '@components/metas/metasSeo';
+import {ThankYouStep} from '@components/steps/thank-you/thank-you-step';
+import {ThemeProvider} from '@mui/material/styles';
 
 export default function Reject(props: { campaign: Campaign }) {
 
@@ -17,11 +21,17 @@ export default function Reject(props: { campaign: Campaign }) {
 
   if (!campaign) return <Custom404/>
   return (
-    <div className={styles.container} style={mainStyles(campaign)}>
-      <div className={styles.main + " template " + campaign.template.align + " " + campaign.template.type}>
-        <RejectStep campaign={props.campaign}/>
-      </div>
-    </div>
+    <ThemeProvider theme={theme(campaign)}>
+      <MetasSeo metas={campaign.cover.metas}/>
+      <main style={mainStyles(campaign)}>
+        <StyledBackground/>
+        <div className="template">
+          <div className={campaign.template.align + ' ' + campaign.template.type}>
+            <RejectStep campaign={props.campaign}/>
+          </div>
+        </div>
+      </main>
+    </ThemeProvider>
   )
 }
 

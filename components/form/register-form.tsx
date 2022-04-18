@@ -1,13 +1,12 @@
-import React, {CSSProperties, useState} from "react";
+import React, {CSSProperties, useState} from 'react';
 import styles from './form.module.scss';
 import {FormElement} from './formElement';
 import {Popup} from '../popupbox/popup';
 
-import {useForm} from "react-hook-form";
-import {useTranslation} from "next-i18next";
-import {Campaign, FormField} from "@interfaces/campaign";
-import {Button} from '@mui/material';
-import { StyledButton } from "@components/shared";
+import {useForm} from 'react-hook-form';
+import {useTranslation} from 'next-i18next';
+import {Campaign, FormField} from '@interfaces/campaign';
+import {StyledButton} from '@components/shared';
 
 interface FormProps {
   campaign: Campaign;

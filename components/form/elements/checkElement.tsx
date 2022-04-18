@@ -2,9 +2,11 @@ import React, {ForwardedRef} from 'react';
 import {FormElementProps} from '@components/form/formElement';
 import Checkbox from '@mui/material/Checkbox';
 import {FormControlLabel} from '@mui/material';
+import {useTranslation} from 'next-i18next';
 
 export const CheckElement = React.forwardRef((props: FormElementProps, ref: ForwardedRef<HTMLInputElement>) => {
-    return (
+  const {t} = useTranslation('common');
+  return (
       <FormControlLabel
         control={
           <Checkbox
@@ -15,7 +17,7 @@ export const CheckElement = React.forwardRef((props: FormElementProps, ref: Forw
             defaultChecked={false}
             disableRipple={false}/>
         }
-        label={props.element.publicLabel}
+        label={t(props.element.publicLabel)}
     />)
   }
 );

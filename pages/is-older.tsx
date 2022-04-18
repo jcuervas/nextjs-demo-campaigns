@@ -1,4 +1,3 @@
-import styles from './home.module.css';
 import {GetServerSideProps} from 'next';
 import React, {useEffect, useState} from 'react';
 import {Campaign} from '@interfaces/campaign';
@@ -7,10 +6,11 @@ import {MetasSeo} from '@components/metas/metasSeo';
 import IsOlderStep from '@components/steps/is-older/is-older-step';
 import {getPageProps} from '@interfaces/util';
 import Custom404 from './404';
-import {StyledLinearProgress} from '@components/shared';
+import {StyledBackground, StyledLinearProgress} from '@components/shared';
 import {useRouter} from 'next/router';
 import {theme} from '../styles/theme/theme';
 import {ThemeProvider} from '@mui/material/styles';
+import {Box} from '@mui/material';
 
 
 export default function IsOlder(props: { campaign: Campaign }) {
@@ -35,7 +35,7 @@ export default function IsOlder(props: { campaign: Campaign }) {
       <MetasSeo metas={campaign.cover.metas}/>
       <main style={mainStyles(campaign)}>
         {loading && <StyledLinearProgress/>}
-
+        <StyledBackground/>
         <div className="template">
           <div className={campaign.template.align + ' ' + campaign.template.type}>
             <IsOlderStep campaign={campaign} onNext={onNext}/>

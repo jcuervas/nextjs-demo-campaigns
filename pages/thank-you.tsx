@@ -8,6 +8,7 @@ import Custom404 from './404';
 import {ThemeProvider} from '@mui/material/styles';
 import {theme} from '../styles/theme/theme';
 import {MetasSeo} from '@components/metas/metasSeo';
+import {StyledBackground} from '@components/shared';
 
 export default function ThankYou(props: { campaign: Campaign }) {
 
@@ -22,6 +23,7 @@ export default function ThankYou(props: { campaign: Campaign }) {
   <ThemeProvider theme={theme(campaign)}>
     <MetasSeo metas={campaign.cover.metas}/>
     <main style={mainStyles(campaign)}>
+      <StyledBackground/>
       <div className="template">
         <div className={campaign.template.align + ' ' + campaign.template.type}>
           <ThankYouStep/>

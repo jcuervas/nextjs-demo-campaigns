@@ -27,5 +27,12 @@
   "ticketUpload": "Cargar el ticket",
   "dniUpload": "Cargar el dni",
   "name": "Nombre",
-  "fileCouldNotBeUploaded": "No se pudo subir el archivo, intentalo de nuevo"
+  "fileCouldNotBeUploaded": "No se pudo subir el archivo, intentalo de nuevo",
+  "surname": "Apellidos",
+  "email": "Email",
+  "phone": "Teléfono",
+  "birthDate": "Fecha de nacimiento",
+  "postalCode": "Código postal",
+  "pin": "Pin",
+  "ticketNumber": "Numero de ticket"
 }

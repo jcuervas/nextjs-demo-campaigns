@@ -21,5 +21,12 @@
   "ticketUpload": "Upload ticket",
   "dniUpload": "Upload dni",
   "name": "Name",
-  "fileCouldNotBeUploaded": "File could not be uploaded, try again"
+  "fileCouldNotBeUploaded": "File could not be uploaded, try again",
+  "surname": "Surname",
+  "email": "Email",
+  "phone": "Phone number",
+  "birthDate": "Date of birth",
+  "postalCode": "Postal code",
+  "pin": "Pin",
+  "ticketNumber": "Ticket number"
 }

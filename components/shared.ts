@@ -13,6 +13,17 @@ export const StyledLinearProgress = styled(LinearProgress)(({}) => ({
   width: '100%'
 }));
 
+export const StyledBackground = styled('div')(({theme}) => ({
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: '100vw',
+  height: '100vh',
+  background: 'url(' + theme['campaign'].template.backgroundImg + ')',
+  backgroundSize: 'cover',
+  zIndex: '-1'
+}));
+
 export const StyledLogo = styled('img')(({}) => ({
   width: '200px'
 }));
@@ -22,8 +33,16 @@ export const StyledCard = styled(Card)(({theme}) => sx({
   height: '100%',
   width: '100%',
   color: theme['campaign'].template.textColor,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
   '& .MuiCardContent-root': {
-    padding: {lg: theme.spacing(6), md: theme.spacing(4), sm: theme.spacing(3)},
+    padding: {
+      lg: theme.spacing(6),
+      md: theme.spacing(4),
+      sm: theme.spacing(4),
+      xs: theme.spacing(3)
+    },
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -69,31 +88,31 @@ export const StyledTextField = styled(TextField)(({theme}) => ({
   }
 }));
 
-export const StyledButton = styled(Button)(({theme}) => ({
+export const StyledButton = styled(Button)(({theme}) => sx({
   fontFamily: 'Prelo',
   fontSize: '1rem',
   color: theme.palette.common.white,
   border: 0,
-  width: '156px',
-  height: '50px',
+  width: {xl: '156px', lg: '136px', md: '116px', sm: '106px'},
+  height: {lg: '50px', md: '45px', sm: '40px', xs: '40px'},
   position: 'relative',
-  padding: 0,
+  padding: theme.spacing(1, 2),
   outline: 'none',
   transition: 'all 0.3s ease',
   zIndex: 0,
   '&.ok': {
     backgroundColor: theme.palette.primary.main,
-    right: '1.1vw',
+    right: {xs: '24px', sm: '1.1vw'},
     '&:after': {
       content: '""',
-      width: '37px',
-      height: '37px',
+      width: {lg: '37px', md: '34px', xs: '30px'},
+      height: {lg: '37px', md: '34px', xs: '30px'},
       borderRadius: '5px',
       backgroundColor: theme.palette.primary.main,
       transform: 'rotate(45deg)',
       position: 'absolute',
-      right: '-18px',
-      top: '7px',
+      right: {lg: '-18px', md: '-15px', xs: '-12px'},
+      top: {lg: '7px', md: '5.5px', xs: '5px'},
       zIndex: '-1',
       transition: 'all .3s ease',
     },
@@ -106,17 +125,17 @@ export const StyledButton = styled(Button)(({theme}) => ({
   },
   '&.ko': {
     backgroundColor: theme.palette.secondary.main,
-    left: '1.1vw',
+    left: {xs: '24px', sm: '1.1vw'},
     '&:after': {
       content: '""',
-      width: '37px',
-      height: '37px',
+      width: {lg: '37px', md: '34px', sm: '30px', xs: '30px'},
+      height: {lg: '37px', md: '34px', sm: '30px', xs: '30px'},
       borderRadius: '5px',
       backgroundColor: theme.palette.secondary.main,
       transform: 'rotate(45deg)',
       position: 'absolute',
-      left: '-18px',
-      top: '7px',
+      left: {lg: '-18px', md: '-15px', sm: '-12px', xs: '-12px'},
+      top: {lg: '7px', md: '5.5px', sm: '5px', xs: '5px'},
       zIndex: '-1',
       transition: 'all .3s ease',
     },
@@ -153,3 +172,4 @@ export const StyledIconButton = styled(IconButton)(({theme}) => ({
 export const StyledText = styled(Typography)(({theme}) => ({
   color: theme['campaign'].template.textColor
 }))
+

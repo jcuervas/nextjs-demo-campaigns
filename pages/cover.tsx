@@ -1,4 +1,3 @@
-import styles from './home.module.css';
 import {GetServerSideProps} from 'next';
 import React, {useEffect, useState} from 'react';
 import {Campaign} from '@interfaces/campaign';
@@ -8,9 +7,10 @@ import {MetasSeo} from '@components/metas/metasSeo';
 import {getPageProps} from '@interfaces/util';
 import Custom404 from './404';
 import {useRouter} from 'next/router';
-import {StyledLinearProgress} from '@components/shared';
+import {StyledBackground, StyledLinearProgress} from '@components/shared';
 import {theme} from '../styles/theme/theme';
 import {ThemeProvider} from '@mui/material/styles';
+import {Box} from '@mui/material';
 
 
 export default function Cover(props: { campaign: Campaign }) {
@@ -36,7 +36,8 @@ export default function Cover(props: { campaign: Campaign }) {
       <MetasSeo metas={campaign.cover.metas}/>
       <main style={mainStyles(campaign)}>
         {loading && <StyledLinearProgress/>}
-        <div className={styles.main + ' template'}>
+        <StyledBackground/>
+        <div className="template">
           <div className={campaign.template.align + ' ' + campaign.template.type}>
             <CoverStep campaign={campaign} onNext={onNext}/>
           </div>

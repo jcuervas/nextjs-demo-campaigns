@@ -10,7 +10,6 @@ export const mainStyles = (campaign: Campaign): CSSProperties => {
   return {
     width: '100vw',
     height: '100vh',
-    background: 'url(' + campaign.template.backgroundImg + ')',
     backgroundSize: 'cover'
   }
 }
